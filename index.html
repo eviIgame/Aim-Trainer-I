@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tapshot – Aim Trainer</title>
+<meta name="description" content="Tapshot: a simple 3D aim trainer that runs in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E1116;
+    --surface: #141922;
+    --border: #262D3A;
+    --border-strong: #3A4252;
+    --text: #E8ECF2;
+    --muted: #9AA4B2;
+    --accent: #FF7A1A;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px clamp(16px, 4vw, 48px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand h1 { margin: 0; font-size: 28px; letter-spacing: 0.04em; }
+  .brand p { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    min-height: 44px; padding: 0 22px;
+    border-radius: 12px; font: inherit; font-weight: 700; font-size: 16px;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); border: 0; }
+  .btn-primary:hover { filter: brightness(0.92); }
+  .btn-ghost { background: transparent; color: var(--text); border: 2px solid var(--border-strong); }
+  .btn-ghost:hover { border-color: var(--text); }
+  .btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px clamp(16px, 4vw, 48px) 32px;
+  }
+  .stage {
+    width: 100%;
+    max-width: 1280px;
+    aspect-ratio: 16 / 9;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .stage iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .hint { margin: 0; font-size: 14px; color: var(--muted); text-align: center; }
+  .hint kbd {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    padding: 2px 6px; border: 1px solid var(--border-strong); border-radius: 6px;
+  }
+  .drills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 1280px;
+    margin-top: 8px;
+  }
+  .drill {
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .drill h2 { margin: 0 0 6px; font-size: 20px; }
+  .drill p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
+  footer {
+    padding: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="17" fill="none" stroke="#FF7A1A" stroke-width="3"/>
+        <circle cx="20" cy="20" r="5" fill="#FF7A1A"/>
+      </svg>
+      <div>
+        <h1>TAPSHOT</h1>
+        <p>Four drills in one 3D room. Thirty seconds each. Get sharper.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="fullscreen" type="button">
+        Fullscreen
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <a class="btn btn-ghost" href="aBUILD/index.html">Open game page</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="stage">
+      <iframe id="game" src="aBUILD/index.html" title="Tapshot game" allow="fullscreen; autoplay; pointer-lock" allowfullscreen></iframe>
+    </div>
+    <p class="hint">Click the game to lock your mouse. Press <kbd>Esc</kbd> to release it.</p>
+
+    <section class="drills" aria-label="Drills">
+      <div class="drill"><h2>Grid</h2><p>Three targets on screen. Hit one, another appears.</p></div>
+      <div class="drill"><h2>Flick</h2><p>One target at a time, far from the last. Snap to it.</p></div>
+      <div class="drill"><h2>Track</h2><p>One moving target. Keep your crosshair on it.</p></div>
+      <div class="drill"><h2>Jumbo Cubes</h2><p>Big cubes drift around the room. Fast, clean shots.</p></div>
+    </section>
+  </main>
+
+  <footer>Tapshot · built with Unity WebGL</footer>
+
+<script>
+  document.getElementById('fullscreen').addEventListener('click', function () {
+    var frame = document.getElementById('game');
+    var req = frame.requestFullscreen || frame.webkitRequestFullscreen;
+    if (req) req.call(frame);
+  });
+</script>
+</body>
+</html>
