@@ -8,28 +8,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/my scene.unity
     guid: d5aec156159df2d4b8dc3f90a261c1b4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tapshot/Scenes/Drill_Grid.unity
     guid: 35a37e05044ea7649ac0060cdf6cd9cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tapshot/Scenes/Drill_Flick.unity
     guid: 8ba9542786132a04caaa61ff1be73822
   - enabled: 1
     path: Assets/Tapshot/Scenes/Drill_Track.unity
     guid: 9d38a00b868f4fb4a8a3418b9c0f9d22
-  - enabled: 1
+  - enabled: 0
     path: Assets/Tapshot/Scenes/Drill_JumboCubes.unity
     guid: 42941eaefc990734682287548fff8a24
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Terminal/TerminalScene.unity
     guid: 4496a3dbb8d263043a4460bac5382ac5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Oasis/OasisScene.unity
     guid: 9fa2ba603a3424f9bafa4119f837f2bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Garden/GardenScene.unity
     guid: 81e71078978223e4c8ffbf973484c9c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cockpit/CockpitScene.unity
     guid: b78a0ca5d851e4ddf993dcc6feab56d0
   m_configObjects:
